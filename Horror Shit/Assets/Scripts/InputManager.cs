@@ -28,8 +28,7 @@ public class InputManager : MonoBehaviour
    
     void FixedUpdate()
     {
-        //tell the playermotor to move using the value from our movement action.
-        motor.ProcessMove(onFoot.Movement.ReadValue<Vector2>());
+
     }
 
     private void LateUpdate()
