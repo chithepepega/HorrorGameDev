@@ -1,79 +1,59 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMotor : MonoBehaviour
-{
+public class PlayerMotor : MonoBehaviour {
     private CharacterController controller;
-    private Vector3 playerVelocity;
-    public float speed = 5f;
-    private bool IsGrounded;
-    public float gravity = -9.8f;
-    public float jumpHeight = 3f;
+    private Vector3 player;
+    private float speed;
+    private float normalSpeed;
+    private float sprintSpeed;
+    private float gravity = -9.81f;
+    private float jumpHeight = 2f;
 
-    bool crouching = false;
-    float crouchTimer = 1;
-    bool lerpCrouch = false;
-    bool springting = false;
-
-    // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
+        normalSpeed = 5f;
+        sprintSpeed = 8f;
         controller = GetComponent<CharacterController>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        IsGrounded = controller.isGrounded;
-        if (lerpCrouch)
-        {
-            crouchTimer += Time.deltaTime;
-            float p = crouchTimer / 1;
-            p *= p;
-            if (crouching)
-                controller.height = Mathf.Lerp(controller.height, 1, p);
-            else
-                controller.height = Mathf.Lerp(controller.height, 2, p);
-            if(p > 1)
-            {
-                lerpCrouch = false;
-                crouchTimer = 0f;
-            }
+    private void Update() {
+        ReadInput();
+    }
+
+    private void FixedUpdate() {
+        ProcessMove();
+    }
+
+    private void ReadInput() {
+        if (controller.isGrounded) {
+            player.x = Input.GetAxisRaw("Horizontal");
+            player.z = Input.GetAxisRaw("Vertical");
+
+            speed = Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : normalSpeed;
+
+            if (Input.GetKeyDown(KeyCode.Space))
+                player.y = Mathf.Sqrt(jumpHeight * -3.0f * gravity);
         }
     }
-    //Receive the inputs for our InputManager.cs and apply them to our character controller
-    public void ProcessMove(Vector2 input)
-    {
-        Vector3 moveDirection = Vector3.zero;
-        moveDirection.x = input.x;
-        moveDirection.z = input.y;
-        controller.Move(transform.TransformDirection(moveDirection) * speed * Time.deltaTime);
-        if (IsGrounded && playerVelocity.y < 0)
-            playerVelocity.y = -2f;
-        playerVelocity.y += gravity * Time.deltaTime;
-        controller.Move(playerVelocity * Time.deltaTime);
+
+    private void ProcessMove() {
+        controller.Move(transform.TransformDirection(new() { x = player.x, z = player.z }) * speed * Time.deltaTime);
+
+        if (controller.isGrounded && player.y < 0)
+            player.y = -2f;
+
+        player.y += gravity * Time.deltaTime;
+        controller.Move(player * Time.deltaTime);
     }
-    public void Crouch()
-    {
-        crouching = !crouching;
-        crouchTimer = 0;
-        lerpCrouch = true;
+
+    public void Crouch() {
+
     }
-    public void Sprint()
-    {
-        springting = !springting;
-        if (springting)
-            speed = 8;
-        else
-            speed = 5;
+
+    public void Sprint() {
+
     }
-    public void Jump()
-    {
-        if(IsGrounded)
-        {
-            playerVelocity.y = Mathf.Sqrt(jumpHeight * -3.0f * gravity);
-        }
+
+    public void Jump() {
 
     }
 }
