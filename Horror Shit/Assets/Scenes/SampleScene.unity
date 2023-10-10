@@ -439,6 +439,7 @@ GameObject:
   - component: {fileID: 190000009}
   - component: {fileID: 190000013}
   - component: {fileID: 190000014}
+  - component: {fileID: 190000015}
   m_Layer: 6
   m_Name: Door
   m_TagString: Untagged
@@ -536,6 +537,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 278a9fe09cff61b49860bcee6c036da1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEvents: 1
   promptMessage: Use Door
   door: {fileID: 190000008}
 --- !u!95 &190000014
@@ -558,6 +560,33 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &190000015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 190000008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 2001265433}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onInteract:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 190000010}
+        m_TargetAssemblyTypeName: UnityEngine.Renderer, UnityEngine
+        m_MethodName: set_material
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2100000, guid: 0644af325a0bcf840a62d2a956011705, type: 2}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Material, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &417439663
 GameObject:
   m_ObjectHideFlags: 0
@@ -2539,6 +2568,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1959783268}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!115 &2001265433
+MonoScript:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 5
+  m_Script: 
+  m_DefaultReferences: {}
+  m_Icon: {fileID: 0}
+  m_ExecutionOrder: 0
+  m_ClassName: InteractionEvent
+  m_Namespace: 
 --- !u!1 &2009604992
 GameObject:
   m_ObjectHideFlags: 0
