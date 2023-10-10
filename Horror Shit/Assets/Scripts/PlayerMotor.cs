@@ -3,9 +3,11 @@ using UnityEngine;
 public class PlayerMotor : MonoBehaviour {
     private CharacterController controller;
     private Vector3 player;
+
     private float speed;
     private float normalSpeed;
     private float sprintSpeed;
+
     private float gravity = -9.81f;
     private float jumpHeight = 2f;
 
@@ -20,7 +22,9 @@ public class PlayerMotor : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        ProcessMove();
+        HandleMove();
+        HandleCrouch();
+        HandleGravity();
     }
 
     private void ReadInput() {
@@ -29,31 +33,27 @@ public class PlayerMotor : MonoBehaviour {
             player.z = Input.GetAxisRaw("Vertical");
 
             speed = Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : normalSpeed;
+            // TODO Read crouch key
 
             if (Input.GetKeyDown(KeyCode.Space))
                 player.y = Mathf.Sqrt(jumpHeight * -3.0f * gravity);
         }
     }
 
-    private void ProcessMove() {
+    private void HandleMove() {
         controller.Move(transform.TransformDirection(new() { x = player.x, z = player.z }) * speed * Time.deltaTime);
+    }
 
-        if (controller.isGrounded && player.y < 0)
+    private void HandleCrouch() {
+        // TODO implement crouch
+    }
+
+    private void HandleGravity() {
+        if (controller.isGrounded && player.y < 0) {
             player.y = -2f;
+        }
 
         player.y += gravity * Time.deltaTime;
         controller.Move(player * Time.deltaTime);
-    }
-
-    public void Crouch() {
-
-    }
-
-    public void Sprint() {
-
-    }
-
-    public void Jump() {
-
     }
 }
