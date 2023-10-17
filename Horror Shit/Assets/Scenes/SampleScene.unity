@@ -3651,7 +3651,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   range: 20
-  sightRange: 8
+  sightRange: 10
   attackRange: 2
 --- !u!65 &979668372
 BoxCollider:
@@ -3698,7 +3698,7 @@ Animator:
   m_GameObject: {fileID: 979668370}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: a84e27bd0d3f1f54ab212b1353fc6c2e, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 80c9a887dfed52b469c1ea8c56abc738, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

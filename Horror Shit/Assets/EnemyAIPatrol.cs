@@ -10,6 +10,8 @@ public class EnemyAIPatrol : MonoBehaviour
 
     [SerializeField] LayerMask groundLayer, playerLayer;
 
+    Animator animator;
+
     //patrol
     Vector3 destPoint;
     bool walkpointSet;
@@ -23,6 +25,7 @@ public class EnemyAIPatrol : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.Find("Player");
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -49,7 +52,11 @@ public class EnemyAIPatrol : MonoBehaviour
 
     void Attack()
     {
-
+        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Mutant Swiping"))
+        {
+            animator.SetTrigger("Attack");
+            agent.SetDestination(transform.position);
+        }
     }
     void SearchForDest()
     {
