@@ -11,9 +11,18 @@ public class PlayerMotor : MonoBehaviour {
     private float gravity = -9.81f;
     private float jumpHeight = 2f;
 
+    private bool crouch;
+    private bool crouching;
+    private float crouchTimer;
+
     void Start() {
+        crouch = false;
+        crouchTimer = 0f;
+        crouching = false;
+
         normalSpeed = 5f;
         sprintSpeed = 8f;
+
         controller = GetComponent<CharacterController>();
     }
 
@@ -33,10 +42,16 @@ public class PlayerMotor : MonoBehaviour {
             player.z = Input.GetAxisRaw("Vertical");
 
             speed = Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : normalSpeed;
-            // TODO Read crouch key
+            
+            if (Input.GetKeyDown(KeyCode.LeftControl)) {
+                crouching = !crouching;
+                crouchTimer = 0;
+                crouch = true;
+            }
 
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space)) {
                 player.y = Mathf.Sqrt(jumpHeight * -3.0f * gravity);
+            }
         }
     }
 
@@ -45,7 +60,22 @@ public class PlayerMotor : MonoBehaviour {
     }
 
     private void HandleCrouch() {
-        // TODO implement crouch
+        if (!crouch) return;
+
+        crouchTimer += Time.deltaTime;
+
+        float p = crouchTimer / 1;
+        p *= p;
+
+        if (crouching)
+            controller.height = Mathf.Lerp(controller.height, 1, p);
+        else
+            controller.height = Mathf.Lerp(controller.height, 2, p);
+
+        if (p > 1) {
+            crouch = false;
+            crouchTimer = 0f;
+        }
     }
 
     private void HandleGravity() {
