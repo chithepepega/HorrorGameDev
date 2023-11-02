@@ -80,6 +80,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""FlashLight"",
+                    ""type"": ""Button"",
+                    ""id"": ""b34955ac-d356-4a9c-a93d-ffa5b295dda9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -300,6 +309,28 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f39a5c55-f926-4548-ade9-1590998fff31"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FlashLight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ddf50e22-56ee-48b2-b5e7-4caf4672e6e4"",
+                    ""path"": ""<Gamepad>/rightStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FlashLight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -832,6 +863,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_OnFoot_Crouch = m_OnFoot.FindAction("Crouch", throwIfNotFound: true);
         m_OnFoot_Sprint = m_OnFoot.FindAction("Sprint", throwIfNotFound: true);
         m_OnFoot_Interact = m_OnFoot.FindAction("Interact", throwIfNotFound: true);
+        m_OnFoot_FlashLight = m_OnFoot.FindAction("FlashLight", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -909,6 +941,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_OnFoot_Crouch;
     private readonly InputAction m_OnFoot_Sprint;
     private readonly InputAction m_OnFoot_Interact;
+    private readonly InputAction m_OnFoot_FlashLight;
     public struct OnFootActions
     {
         private @PlayerInput m_Wrapper;
@@ -919,6 +952,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         public InputAction @Crouch => m_Wrapper.m_OnFoot_Crouch;
         public InputAction @Sprint => m_Wrapper.m_OnFoot_Sprint;
         public InputAction @Interact => m_Wrapper.m_OnFoot_Interact;
+        public InputAction @FlashLight => m_Wrapper.m_OnFoot_FlashLight;
         public InputActionMap Get() { return m_Wrapper.m_OnFoot; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -946,6 +980,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Interact.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnInteract;
+                @FlashLight.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnFlashLight;
+                @FlashLight.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnFlashLight;
+                @FlashLight.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnFlashLight;
             }
             m_Wrapper.m_OnFootActionsCallbackInterface = instance;
             if (instance != null)
@@ -968,6 +1005,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
+                @FlashLight.started += instance.OnFlashLight;
+                @FlashLight.performed += instance.OnFlashLight;
+                @FlashLight.canceled += instance.OnFlashLight;
             }
         }
     }
@@ -1085,6 +1125,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         void OnCrouch(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnFlashLight(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

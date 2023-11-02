@@ -1,13 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
-    private PlayerInput playerInput;
     public PlayerInput.OnFootActions onFoot;
-
+    private PlayerInput playerInput;
     private PlayerMotor motor;
     private PlayerLook look;
 
@@ -20,7 +16,6 @@ public class InputManager : MonoBehaviour
         look = GetComponent<PlayerLook>();
     }
 
-   
     void FixedUpdate()
     {
 
@@ -30,10 +25,12 @@ public class InputManager : MonoBehaviour
     {
         look.ProcessLook(onFoot.Look.ReadValue<Vector2>());
     }
+
     private void OnEnable()
     {
         onFoot.Enable();
     }
+
     private void OnDisable()
     {
         onFoot.Disable();

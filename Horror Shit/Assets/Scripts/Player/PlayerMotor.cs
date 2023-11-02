@@ -42,7 +42,7 @@ public class PlayerMotor : MonoBehaviour {
             player.z = Input.GetAxisRaw("Vertical");
 
             speed = Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : normalSpeed;
-            
+
             if (Input.GetKeyDown(KeyCode.LeftControl)) {
                 crouching = !crouching;
                 crouchTimer = 0;
