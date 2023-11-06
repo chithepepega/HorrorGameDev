@@ -1673,6 +1673,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32850c64db0fe13429def26951d51f4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 919132149205387498}
   flashLight: {fileID: 919132149205387497}
 --- !u!1 &171773198 stripped
 GameObject:
@@ -3433,23 +3434,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a6a21f0d0014a4c449f2b18d089cd8cc, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.1124351
+      value: 1.259944
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a6a21f0d0014a4c449f2b18d089cd8cc, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.1124352
+      value: 1.2599441
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a6a21f0d0014a4c449f2b18d089cd8cc, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.1124352
+      value: 1.2599441
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a6a21f0d0014a4c449f2b18d089cd8cc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.00056
+      value: 0.00052
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a6a21f0d0014a4c449f2b18d089cd8cc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.00156
+      value: 0.00154
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a6a21f0d0014a4c449f2b18d089cd8cc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5474,6 +5475,9 @@ MonoBehaviour:
   m_Script: {fileID: 1842142687}
   m_Name: 
   m_EditorClassIdentifier: 
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &640109174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14157,6 +14161,9 @@ MonoBehaviour:
   m_Script: {fileID: 1842142687}
   m_Name: 
   m_EditorClassIdentifier: 
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1634159038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18279,6 +18286,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 543450653682766419}
+  - component: {fileID: 919132149205387498}
   m_Layer: 0
   m_Name: ArmsforUnity
   m_TagString: Untagged
@@ -18286,6 +18294,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!95 &919132149205387498
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132149205387497}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 4b47dd321ae0b054ca315b488e5969b2, type: 3}
+  m_Controller: {fileID: 9100000, guid: c4697ff6dbf9a6a49a013424f65f2aa6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &930096352590923968
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerFlashLight : MonoBehaviour
 {
+    public Animator anim;
     public GameObject flashLight;
     private bool flashlightOn;
     private float flashlightBaterry;
@@ -21,7 +22,14 @@ public class PlayerFlashLight : MonoBehaviour
     {
         Flashlight();
     }
-
+    IEnumerator PlayAnimationAndDeactivate()
+    {
+        anim.Play("rig|Put_Telephone_Away");
+        // Wait for the animation to finish. Here, 1f is the length of the animation in seconds.
+        yield return new WaitForSeconds(2f);
+        flashLight.SetActive(false);
+        flashlightOn = false;
+    }
     void Flashlight()
     {
         if (!flashlightOn)
@@ -36,15 +44,16 @@ public class PlayerFlashLight : MonoBehaviour
         {
             if (flashlightOn == false)
             return;
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                flashLight.SetActive(false);
-                flashlightOn = false;
-            }
+             
+             if (Input.GetKeyDown(KeyCode.F))
+             {
+                StartCoroutine(PlayAnimationAndDeactivate());
+             }
         }
+        
     }
 
-    void FlashLightBaterry()
+    void FlashLightGlitch()
     {
 
     }

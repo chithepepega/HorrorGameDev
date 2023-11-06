@@ -8,8 +8,8 @@ public class PlayerMotor : MonoBehaviour {
     private float normalSpeed;
     private float sprintSpeed;
 
-    private float gravity = -9.81f;
-    private float jumpHeight = 2f;
+    private float gravity = -10.81f;
+    private float jumpHeight = 1f;
 
     private bool crouch;
     private bool crouching;
@@ -56,7 +56,7 @@ public class PlayerMotor : MonoBehaviour {
     }
 
     private void HandleMove() {
-        controller.Move(transform.TransformDirection(new() { x = player.x, z = player.z }) * speed * Time.deltaTime);
+        controller.Move(transform.TransformDirection(new() { x = player.x, z = player.z }) * speed * Time.deltaTime); 
     }
 
     private void HandleCrouch() {
