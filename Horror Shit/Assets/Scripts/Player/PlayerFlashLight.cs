@@ -6,6 +6,7 @@ public class PlayerFlashLight : MonoBehaviour
 {
     public GameObject flashLight;
     private bool flashlightOn;
+    private float flashlightBaterry;
     
     
     // Start is called before the first frame update
@@ -41,6 +42,11 @@ public class PlayerFlashLight : MonoBehaviour
                 flashlightOn = false;
             }
         }
+    }
+
+    void FlashLightBaterry()
+    {
+
     }
     
 }
