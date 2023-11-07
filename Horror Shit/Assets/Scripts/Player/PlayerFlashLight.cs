@@ -24,7 +24,7 @@ public class PlayerFlashLight : MonoBehaviour
     }
     IEnumerator PlayAnimationAndDeactivate()
     {
-        anim.Play("rig|Put_Telephone_Away");
+        anim.Play("Put_TelephoneAway");
         // Wait for the animation to finish. Here, 1f is the length of the animation in seconds.
         yield return new WaitForSeconds(2f);
         flashLight.SetActive(false);
