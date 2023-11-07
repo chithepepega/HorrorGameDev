@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerFlashLight : MonoBehaviour
 {
+    public FlashLightOnOff flashLightOnOff;
     public Animator anim;
     public GameObject flashLight;
     private bool flashlightOn;
@@ -36,6 +37,7 @@ public class PlayerFlashLight : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.F))
             {
+                flashLightOnOff.cameraLight.intensity = 2f;
                 flashLight.SetActive(true);
                 flashlightOn = true;
             }
@@ -51,11 +53,6 @@ public class PlayerFlashLight : MonoBehaviour
              }
         }
         
-    }
-
-    void FlashLightGlitch()
-    {
-
     }
     
 }
