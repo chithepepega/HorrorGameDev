@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerFlashLight : MonoBehaviour
 {
@@ -9,7 +10,12 @@ public class PlayerFlashLight : MonoBehaviour
     public GameObject flashLight;
     private bool flashlightOn;
     private float flashlightBaterry;
-    
+
+    private bool keypad = false;    
+    [SerializeField] private TextMeshProUGUI codeText;
+    string codeTextValue = "";
+    public string safeCode;
+    public GameObject codePanel;
     
     // Start is called before the first frame update
     void Awake()
@@ -21,6 +27,8 @@ public class PlayerFlashLight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        codeText.text = codeTextValue;
+        FlashlightMinigame();
         Flashlight();
     }
     IEnumerator PlayAnimationAndDeactivate()
@@ -42,9 +50,18 @@ public class PlayerFlashLight : MonoBehaviour
                 flashlightOn = true;
             }
         }
+        else if(flashLightOnOff.glitched == true)
+        {
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                keypad = true;
+                codePanel.SetActive(true);
+            }
+            
+        }
         else
         {
-            if (flashlightOn == false)
+            if (flashlightOn == false || flashLightOnOff.glitched == true)
             return;
              
              if (Input.GetKeyDown(KeyCode.F))
@@ -53,6 +70,27 @@ public class PlayerFlashLight : MonoBehaviour
              }
         }
         
+    }
+
+    public void AddDigit(string digit)
+    {
+        codeTextValue += digit;
+    }
+    public void FlashlightMinigame()
+    {
+        if (codeTextValue == safeCode)
+        {
+            keypad = false; 
+            flashLightOnOff.glitched = false;
+            flashLightOnOff.cameraLight.intensity = 2f;
+            codePanel.SetActive(false);
+            codeTextValue = "";
+        }
+
+        if (codeTextValue.Length >= 4)
+        {
+            codeTextValue = "";
+        }
     }
     
 }

@@ -8,11 +8,15 @@ public class FlashLightOnOff : MonoBehaviour
     public Light cameraLight;
     public float minWaitTime = 0.1f;
     public float maxWaitTime = 10f;
-    public bool flashlightOff;
+    public bool glitched;
 
+    private void Awake()
+    {
+        glitched = false;
+    }
     private void Start()
     {
-        flashlightOff = true;
+        
         if (flashLight.activeSelf)
         {
             InvokeRepeating("GlitchFlashLight", 10, Random.Range(10, 20));
@@ -22,10 +26,7 @@ public class FlashLightOnOff : MonoBehaviour
 
     private void LateUpdate()
     {
-        if(!flashlightOff)
-        {
 
-        }
     }
 
     public void FlashLightOn()
@@ -47,13 +48,13 @@ public class FlashLightOnOff : MonoBehaviour
         int randomNumber = Random.Range(1, 3);
         if (randomNumber == 1)
         {
-            flashlightOff = true;
+            glitched = true;
             Debug.Log("Opcao 1");
             cameraLight.intensity = 0f;
         }
         else if (randomNumber == 2)
         {
-            flashlightOff = false;
+            glitched = false;
             Debug.Log("Opcao 2");
             cameraLight.intensity = 2f;
         }
