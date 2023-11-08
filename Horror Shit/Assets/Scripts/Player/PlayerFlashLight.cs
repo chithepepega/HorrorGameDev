@@ -9,7 +9,6 @@ public class PlayerFlashLight : MonoBehaviour
     public Animator anim;
     public GameObject flashLight;
     private bool flashlightOn;
-    private float flashlightBaterry;
 
     private bool keypad = false;    
     [SerializeField] private TextMeshProUGUI codeText;
@@ -50,6 +49,7 @@ public class PlayerFlashLight : MonoBehaviour
                 flashlightOn = true;
             }
         }
+         // else if shit 
         else if(flashLightOnOff.glitched == true)
         {
             if (Input.GetKeyDown(KeyCode.F))
@@ -72,6 +72,12 @@ public class PlayerFlashLight : MonoBehaviour
         
     }
 
+    void CallerOnPhone()
+    {
+        anim.Play("Put_TelephoneAway");
+    }
+
+    #region Keypad Stuff
     public void AddDigit(string digit)
     {
         codeTextValue += digit;
@@ -92,5 +98,6 @@ public class PlayerFlashLight : MonoBehaviour
             codeTextValue = "";
         }
     }
-    
+    #endregion
+
 }

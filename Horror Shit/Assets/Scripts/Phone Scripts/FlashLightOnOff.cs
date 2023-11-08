@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class FlashLightOnOff : MonoBehaviour
 {
+    public GameObject phone;
     public GameObject flashLight;
     public Light cameraLight;
     public float minWaitTime = 0.1f;
     public float maxWaitTime = 10f;
     public bool glitched;
+    public Material newScreenMaterial;
+    public Material currentScreenMaterial;
 
     private void Awake()
     {
@@ -16,10 +19,13 @@ public class FlashLightOnOff : MonoBehaviour
     }
     private void Start()
     {
-        
-        if (flashLight.activeSelf)
+        if (phone.activeInHierarchy)
         {
             InvokeRepeating("GlitchFlashLight", 10, Random.Range(10, 20));
+        }
+        else
+        {
+            return;
         }
        
     }
@@ -31,11 +37,19 @@ public class FlashLightOnOff : MonoBehaviour
 
     public void FlashLightOn()
     {
+        var myRenderer = phone.GetComponent<Renderer>();
+        var TempArray = myRenderer.materials;
+        TempArray[1] = currentScreenMaterial;
+        myRenderer.materials = TempArray;
         flashLight.SetActive(true);
     }
 
     public void FlashLightOff()
     {
+        var myRenderer = phone.GetComponent<Renderer>();
+        var TempArray = myRenderer.materials;
+        TempArray[1] = newScreenMaterial;
+        myRenderer.materials = TempArray;
         flashLight.SetActive(false);
     }
     void GlitchFlashLight()
