@@ -12,6 +12,7 @@ public class FlashLightOnOff : MonoBehaviour
     public bool glitched;
     public Material newScreenMaterial;
     public Material currentScreenMaterial;
+    public bool caller;
 
     private void Awake()
     {
@@ -59,7 +60,7 @@ public class FlashLightOnOff : MonoBehaviour
 
     IEnumerator GlitchLight()
     {
-        int randomNumber = Random.Range(1, 3);
+        int randomNumber = Random.Range(1, 4);
         if (randomNumber == 1)
         {
             glitched = true;
@@ -72,6 +73,11 @@ public class FlashLightOnOff : MonoBehaviour
             Debug.Log("Opcao 2");
             cameraLight.intensity = 2f;
         }
-            yield return new WaitForSeconds(Random.Range(minWaitTime, maxWaitTime));
+        else if (randomNumber == 3)
+        {
+            caller = true;
+            Debug.Log("caller");
+        }
+        yield return new WaitForSeconds(Random.Range(minWaitTime, maxWaitTime));
     }
 }

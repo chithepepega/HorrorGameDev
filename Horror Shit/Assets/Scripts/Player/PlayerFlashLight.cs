@@ -10,6 +10,11 @@ public class PlayerFlashLight : MonoBehaviour
     public GameObject flashLight;
     private bool flashlightOn;
 
+    public GameObject phone;
+    public Material newScreenMaterial;
+    public Material currentScreenMaterial;
+
+
     private bool keypad = false;    
     [SerializeField] private TextMeshProUGUI codeText;
     string codeTextValue = "";
@@ -59,6 +64,20 @@ public class PlayerFlashLight : MonoBehaviour
             }
             
         }
+        else if (flashLightOnOff.caller == true)
+        {
+            anim.Play("Caller_ReceiveHandling");
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                Debug.Log("Received");
+                anim.Play("Answer_Phone");
+                var myRenderer = phone.GetComponent<Renderer>();
+                var TempArray = myRenderer.materials;
+                TempArray[1] = newScreenMaterial;
+                myRenderer.materials = TempArray;
+                CallerOnPhone();
+            }
+        }
         else
         {
             if (flashlightOn == false || flashLightOnOff.glitched == true)
@@ -74,7 +93,10 @@ public class PlayerFlashLight : MonoBehaviour
 
     void CallerOnPhone()
     {
-        anim.Play("Put_TelephoneAway");
+        if (flashLightOnOff.caller == true)
+        {
+            
+        }
     }
 
     #region Keypad Stuff

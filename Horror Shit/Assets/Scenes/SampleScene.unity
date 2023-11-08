@@ -1810,6 +1810,9 @@ MonoBehaviour:
   flashLightOnOff: {fileID: 919132149205387499}
   anim: {fileID: 919132149205387498}
   flashLight: {fileID: 919132149205387497}
+  phone: {fileID: 488211915}
+  newScreenMaterial: {fileID: 2100000, guid: 627fd74343c2c7844b97d7206b675dce, type: 2}
+  currentScreenMaterial: {fileID: 2100000, guid: b93b41d628c07de4e82a6d6973ae38f1, type: 2}
   codeText: {fileID: 296565056}
   safeCode: 123
   codePanel: {fileID: 1365926895}
@@ -21245,6 +21248,7 @@ MonoBehaviour:
   glitched: 0
   newScreenMaterial: {fileID: 2100000, guid: 4bcdd7376c377a2478756fc4de3b391e, type: 2}
   currentScreenMaterial: {fileID: 2100000, guid: b93b41d628c07de4e82a6d6973ae38f1, type: 2}
+  caller: 0
 --- !u!1 &930096352590923968
 GameObject:
   m_ObjectHideFlags: 0
