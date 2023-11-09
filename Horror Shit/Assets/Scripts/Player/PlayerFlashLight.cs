@@ -37,6 +37,7 @@ public class PlayerFlashLight : MonoBehaviour
         codeText.text = codeTextValue;
         FlashlightMinigame();
         Flashlight();
+        
     }
     IEnumerator PlayAnimationAndDeactivate()
     {
@@ -55,6 +56,7 @@ public class PlayerFlashLight : MonoBehaviour
                 flashLightOnOff.cameraLight.intensity = 2f;
                 flashLight.SetActive(true);
                 flashlightOn = true;
+                flashLightOnOff.EnablePhoneEvent();
             }
         }
          // else if shit 
@@ -62,6 +64,7 @@ public class PlayerFlashLight : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.F))
             {
+                flashLightOnOff.EnablePhoneEvent();
                 keypad = true;
                 codePanel.SetActive(true);
             }
@@ -95,7 +98,7 @@ public class PlayerFlashLight : MonoBehaviour
         }
         
     }
-
+   
     void CallerOnPhone()
     {
         int randomQuestion = Random.Range(1, 4);
@@ -127,6 +130,7 @@ public class PlayerFlashLight : MonoBehaviour
             flashLightOnOff.cameraLight.intensity = 2f;
             codePanel.SetActive(false);
             codeTextValue = "";
+            flashLightOnOff.EnablePhoneEvent();
         }
 
         if (codeTextValue.Length >= 4)

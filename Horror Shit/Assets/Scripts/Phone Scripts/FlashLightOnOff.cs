@@ -10,6 +10,7 @@ public class FlashLightOnOff : MonoBehaviour
     public float minWaitTime = 0.1f;
     public float maxWaitTime = 10f;
     public bool glitched;
+    public bool phoneEvent;
     public Material newScreenMaterial;
     public Material currentScreenMaterial;
     public bool caller;
@@ -17,25 +18,13 @@ public class FlashLightOnOff : MonoBehaviour
     private void Awake()
     {
         glitched = false;
+        phoneEvent = true;
     }
     private void Start()
     {
-        if (phone.activeInHierarchy)
-        {
-            InvokeRepeating("GlitchFlashLight", 10, Random.Range(10, 20));
-        }
-        else
-        {
-            return;
-        }
-       
+        InvokeRepeating("GlitchFlashLight", 10, Random.Range(10, 20));
     }
-
-    private void LateUpdate()
-    {
-
-    }
-
+    
     public void FlashLightOn()
     {
         var myRenderer = phone.GetComponent<Renderer>();
@@ -58,25 +47,38 @@ public class FlashLightOnOff : MonoBehaviour
         StartCoroutine(GlitchLight());
     }
 
+    public void EnablePhoneEvent()
+    {
+        phoneEvent = true;
+    }
+    public void DisablePhoneEvent()
+    {
+        phoneEvent = false;
+    }
+
     IEnumerator GlitchLight()
     {
-        int randomNumber = Random.Range(1, 4);
-        if (randomNumber == 1)
+        if (phoneEvent)
         {
-            glitched = true;
-            Debug.Log("Opcao 1");
-            cameraLight.intensity = 0f;
-        }
-        else if (randomNumber == 2)
-        {
-            glitched = false;
-            Debug.Log("Opcao 2");
-            cameraLight.intensity = 2f;
-        }
-        else if (randomNumber == 3)
-        {
-            caller = true;
-            Debug.Log("caller");
+            DisablePhoneEvent();
+            int randomNumber = Random.Range(1, 4);
+            if (randomNumber == 1)
+            {
+                glitched = true;
+                Debug.Log("Opcao 1");
+                cameraLight.intensity = 0f;
+            }
+            else if (randomNumber == 2)
+            {
+                glitched = false;
+                Debug.Log("Opcao 2");
+                cameraLight.intensity = 2f;
+            }
+            else if (randomNumber == 3)
+            {
+                caller = true;
+                Debug.Log("caller");
+            }
         }
         yield return new WaitForSeconds(Random.Range(minWaitTime, maxWaitTime));
     }
