@@ -14,6 +14,9 @@ public class PlayerFlashLight : MonoBehaviour
     public Material newScreenMaterial;
     public Material currentScreenMaterial;
 
+    public GameObject fearQuestion;
+    public GameObject godQuestion;
+    public GameObject deathQuestion;
 
     private bool keypad = false;    
     [SerializeField] private TextMeshProUGUI codeText;
@@ -66,15 +69,17 @@ public class PlayerFlashLight : MonoBehaviour
         }
         else if (flashLightOnOff.caller == true)
         {
-            anim.Play("Caller_ReceiveHandling");
+            anim.SetBool("receiveCall", true);
+            var myRenderer = phone.GetComponent<Renderer>();
+            var TempArray = myRenderer.materials;
+            TempArray[1] = newScreenMaterial;
+            myRenderer.materials = TempArray;
             if (Input.GetKeyDown(KeyCode.F))
             {
+                anim.SetBool("receiveCall", false);
+                anim.SetBool("acceptCall", true);
                 Debug.Log("Received");
                 anim.Play("Answer_Phone");
-                var myRenderer = phone.GetComponent<Renderer>();
-                var TempArray = myRenderer.materials;
-                TempArray[1] = newScreenMaterial;
-                myRenderer.materials = TempArray;
                 CallerOnPhone();
             }
         }
@@ -93,9 +98,18 @@ public class PlayerFlashLight : MonoBehaviour
 
     void CallerOnPhone()
     {
-        if (flashLightOnOff.caller == true)
+        int randomQuestion = Random.Range(1, 4);
+        if(randomQuestion == 1)
         {
-            
+            fearQuestion.SetActive(true);
+        }
+        if (randomQuestion == 2)
+        {
+            deathQuestion.SetActive(true);
+        }
+        if (randomQuestion == 3)
+        {
+            godQuestion.SetActive(true);
         }
     }
 
