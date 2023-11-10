@@ -14,6 +14,7 @@ public class PlayerFlashLight : MonoBehaviour
     public Material newScreenMaterial;
     public Material currentScreenMaterial;
 
+    public float timer = 10f;
     public GameObject fearQuestion;
     public GameObject godQuestion;
     public GameObject deathQuestion;
@@ -37,6 +38,11 @@ public class PlayerFlashLight : MonoBehaviour
         codeText.text = codeTextValue;
         FlashlightMinigame();
         Flashlight();
+        if (anim.GetBool("receiveCall") == true)
+        {
+            Debug.Log("timer :" + timer);
+            timer -= Time.deltaTime;
+        }
         
     }
     IEnumerator PlayAnimationAndDeactivate()
@@ -78,6 +84,15 @@ public class PlayerFlashLight : MonoBehaviour
             var TempArray = myRenderer.materials;
             TempArray[1] = newScreenMaterial;
             myRenderer.materials = TempArray;
+            if (timer <= 0f)
+            {
+                Debug.Log("The timer hit 0");
+                godQuestion.SetActive(false);
+                deathQuestion.SetActive(false);
+                fearQuestion.SetActive(false);
+                flashLightOnOff.caller = false;
+                StartCoroutine(PlayAnimationAndDeactivate());
+            }
             if (Input.GetKeyDown(KeyCode.F))
             {
                 anim.SetBool("receiveCall", false);
@@ -104,7 +119,8 @@ public class PlayerFlashLight : MonoBehaviour
     {
         flashLightOnOff.caller = false;
         int randomQuestion = Random.Range(1, 4);
-        if(randomQuestion == 1)
+
+        if (randomQuestion == 1)
         {
             fearQuestion.SetActive(true);
         }
