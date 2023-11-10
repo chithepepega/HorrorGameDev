@@ -46,6 +46,7 @@ public class PlayerFlashLight : MonoBehaviour
         yield return new WaitForSeconds(2f);
         flashLight.SetActive(false);
         flashlightOn = false;
+        flashLightOnOff.DisablePhoneEvent();
     }
     void Flashlight()
     {
@@ -101,6 +102,7 @@ public class PlayerFlashLight : MonoBehaviour
    
     void CallerOnPhone()
     {
+        flashLightOnOff.caller = false;
         int randomQuestion = Random.Range(1, 4);
         if(randomQuestion == 1)
         {
