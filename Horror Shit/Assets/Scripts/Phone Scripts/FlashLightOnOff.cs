@@ -16,6 +16,10 @@ public class FlashLightOnOff : MonoBehaviour
     public Material currentScreenMaterial;
     public bool caller;
 
+
+    [SerializeField] public AudioSource callingSound;
+    public AudioSource clickSound;
+
     private void Awake()
     {
         glitched = false;
@@ -56,6 +60,15 @@ public class FlashLightOnOff : MonoBehaviour
     {
         playerFlashLight.timer = 10f;
         phoneEvent = false;
+    }
+
+    public void CallerSound()
+    {
+        callingSound.Play();
+    }
+    public void ClickSound()
+    {
+        clickSound.Play();
     }
 
     IEnumerator GlitchLight()

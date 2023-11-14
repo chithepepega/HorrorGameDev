@@ -86,6 +86,7 @@ public class PlayerFlashLight : MonoBehaviour
             myRenderer.materials = TempArray;
             if (timer <= 0f)
             {
+                flashLightOnOff.callingSound.Stop();
                 Debug.Log("The timer hit 0");
                 godQuestion.SetActive(false);
                 deathQuestion.SetActive(false);
@@ -119,7 +120,7 @@ public class PlayerFlashLight : MonoBehaviour
     {
         flashLightOnOff.caller = false;
         int randomQuestion = Random.Range(1, 4);
-
+        flashLightOnOff.callingSound.Stop();
         if (randomQuestion == 1)
         {
             fearQuestion.SetActive(true);
