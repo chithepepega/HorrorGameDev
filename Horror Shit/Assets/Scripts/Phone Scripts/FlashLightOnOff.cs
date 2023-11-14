@@ -88,6 +88,7 @@ public class FlashLightOnOff : MonoBehaviour
                 glitched = false;
                 Debug.Log("Opcao 2");
                 cameraLight.intensity = 2f;
+                EnablePhoneEvent();
             }
             else if (randomNumber == 3)
             {
