@@ -4,15 +4,16 @@ public class PlayerMotor : MonoBehaviour {
     private CharacterController controller;
     private Vector3 player;
 
-    private float speed;
-    private float normalSpeed;
-    private float sprintSpeed;
+    private float speed = 5;
+    private bool sprinting;
 
     private float gravity = -9.81f;
-    private float jumpHeight = 2f;
+    private float jumpHeight = 3f;
+    private bool isGrounded;
 
     private bool crouch;
-    private bool crouching;
+    private bool crouching = false;
+    private bool lerpCrouch = false;
     private float crouchTimer;
 
     void Start() {
@@ -20,70 +21,62 @@ public class PlayerMotor : MonoBehaviour {
         crouchTimer = 0f;
         crouching = false;
 
-        normalSpeed = 5f;
-        sprintSpeed = 8f;
-
         controller = GetComponent<CharacterController>();
     }
 
-    private void Update() {
-        ReadInput();
-    }
+    private void Update() 
+    {
+        isGrounded = controller.isGrounded;
+        if (lerpCrouch)
+        {
+            crouchTimer += Time.deltaTime;
+            float p = crouchTimer / 1;
+            p *= p;
+            if (crouching)
+                controller.height = Mathf.Lerp(controller.height, 1, p);
+            else
+                controller.height = Mathf.Lerp(controller.height, 2, p);
 
-    private void FixedUpdate() {
-        HandleMove();
-        HandleCrouch();
-        HandleGravity();
-    }
-
-    private void ReadInput() {
-        if (controller.isGrounded) {
-            player.x = Input.GetAxisRaw("Horizontal");
-            player.z = Input.GetAxisRaw("Vertical");
-
-            speed = Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : normalSpeed;
-
-            if (Input.GetKeyDown(KeyCode.LeftControl)) {
-                crouching = !crouching;
-                crouchTimer = 0;
-                crouch = true;
-            }
-
-            if (Input.GetKeyDown(KeyCode.Space)) {
-                player.y = Mathf.Sqrt(jumpHeight * -3.0f * gravity);
+            if (p > 1)
+            {
+                crouch = false;
+                crouchTimer = 0f;
             }
         }
     }
 
-    private void HandleMove() {
-        controller.Move(transform.TransformDirection(new() { x = player.x, z = player.z }) * speed * Time.deltaTime); 
-    }
+    public void ProcessMove(Vector2 input)
+    {
+        Vector3 moveDirection = Vector3.zero;
 
-    private void HandleCrouch() {
-        if (!crouch) return;
-
-        crouchTimer += Time.deltaTime;
-
-        float p = crouchTimer / 1;
-        p *= p;
-
-        if (crouching)
-            controller.height = Mathf.Lerp(controller.height, 1, p);
-        else
-            controller.height = Mathf.Lerp(controller.height, 2, p);
-
-        if (p > 1) {
-            crouch = false;
-            crouchTimer = 0f;
-        }
-    }
-
-    private void HandleGravity() {
-        if (controller.isGrounded && player.y < 0) {
-            player.y = -2f;
-        }
-
+        moveDirection.x = input.x;
+        moveDirection.z = input.y;
+        controller.Move(transform.TransformDirection(moveDirection) * speed * Time.deltaTime);
         player.y += gravity * Time.deltaTime;
+        if (isGrounded && player.y < 0)
+            player.y = -2f;
         controller.Move(player * Time.deltaTime);
+  
+    }
+   
+    public void Sprint() {
+        sprinting = !sprinting;
+        if (sprinting)
+            speed = 8;
+        else
+            speed = 5;
+    }
+
+    public void HandleCrouch() {
+        crouching = !crouching;
+        crouchTimer = 0;
+        lerpCrouch = true;
+    }
+
+    public void Jump() {
+        if(isGrounded)
+        {
+            player.y = Mathf.Sqrt(jumpHeight * -3.0f * gravity);
+        }
     }
 }

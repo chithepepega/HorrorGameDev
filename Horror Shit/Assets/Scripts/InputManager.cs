@@ -14,11 +14,14 @@ public class InputManager : MonoBehaviour
         onFoot = playerInput.OnFoot;
         motor = GetComponent<PlayerMotor>();
         look = GetComponent<PlayerLook>();
+        onFoot.Jump.performed += ctx => motor.Jump();
+        onFoot.Sprint.performed += ctx => motor.Sprint();
+        onFoot.Crouch.performed += ctx => motor.HandleCrouch();
     }
 
     void FixedUpdate()
     {
-
+        motor.ProcessMove(onFoot.Movement.ReadValue<Vector2>());
     }
 
     private void LateUpdate()
