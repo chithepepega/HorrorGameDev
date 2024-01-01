@@ -18,7 +18,6 @@ public class InputManager : MonoBehaviour
         onFoot.Jump.performed += ctx => motor.Jump();
         onFoot.Sprint.performed += ctx => motor.Sprint();
         onFoot.Crouch.performed += ctx => motor.HandleCrouch();
-        onFoot.FlashLight.performed += ctx => flashLight.FlashLightArm();
     }
 
     void FixedUpdate()

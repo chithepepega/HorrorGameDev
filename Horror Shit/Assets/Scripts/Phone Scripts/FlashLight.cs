@@ -5,23 +5,29 @@ using UnityEngine;
 public class FlashLight : MonoBehaviour
 {
     public GameObject armsFlashLight;
-    private bool flashLightOn = true;
-    
+    public FlashLightInputManager flashLightInputManager;
+
+    private void Awake()
+    {
+        flashLightInputManager = GetComponentInChildren<FlashLightInputManager>();
+    }
+
+    private void Start()
+    {
+        armsFlashLight.SetActive(false);
+    }
 
     public void FlashLightArm()
     {
-        if (!flashLightOn)
-            return;
-        armsFlashLight.SetActive(true);
-
-    }
-
-    public void FlashLightArm0ff()
-    {
-        if (flashLightOn)
-            return;
-        armsFlashLight.SetActive(false);
-
+        if (flashLightInputManager.flashLightIsOn == false)
+        {
+            armsFlashLight.SetActive(true);
+        }
+        if(flashLightInputManager.flashLightIsOn == true)
+        {
+            armsFlashLight.SetActive(false);
+        }
+   
     }
 
 }
