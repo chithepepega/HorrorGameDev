@@ -7587,7 +7587,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 164931644}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 32850c64db0fe13429def26951d51f4a, type: 3}
   m_Name: 
@@ -46991,7 +46991,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.018979592, y: 0.0010828851, z: 0.031135485}
   m_Center: {x: -0.0094524985, y: -3.9985718e-10, z: 0.015567742}
---- !u!114 &970006302
+--- !u!114 &970006306
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -47000,7 +47000,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 970006294}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1307000120}
+  m_Script: {fileID: 2045335760}
   m_Name: 
   m_EditorClassIdentifier: 
   onInteract:
@@ -62466,20 +62466,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1306048187}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!115 &1307000120
-MonoScript:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  serializedVersion: 5
-  m_Script: 
-  m_DefaultReferences: {}
-  m_Icon: {fileID: 0}
-  m_ExecutionOrder: 0
-  m_ClassName: InteractionEvent
-  m_Namespace: 
 --- !u!1001 &1310344351
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -79442,16 +79428,28 @@ PrefabInstance:
       value: 14
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 58f4c14a1dbe28e4eaaadeea4e2d2795, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 191.82187
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 58f4c14a1dbe28e4eaaadeea4e2d2795, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 133.59
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 58f4c14a1dbe28e4eaaadeea4e2d2795, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 141.62082
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 58f4c14a1dbe28e4eaaadeea4e2d2795, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -24.355
+      value: -24.263
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 58f4c14a1dbe28e4eaaadeea4e2d2795, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.02
+      value: -0.071
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 58f4c14a1dbe28e4eaaadeea4e2d2795, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.8
+      value: 9.9963
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 58f4c14a1dbe28e4eaaadeea4e2d2795, type: 3}
       propertyPath: m_LocalRotation.w
@@ -95636,6 +95634,20 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!115 &2045335760
+MonoScript:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 5
+  m_Script: 
+  m_DefaultReferences: {}
+  m_Icon: {fileID: 0}
+  m_ExecutionOrder: 0
+  m_ClassName: InteractionEvent
+  m_Namespace: 
 --- !u!1 &2052443200
 GameObject:
   m_ObjectHideFlags: 0
@@ -101636,7 +101648,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &919132149205387498
 Animator:
   serializedVersion: 5
@@ -103008,7 +103020,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7072803259527104086}
-  m_LocalRotation: {x: 0.5614375, y: -0.45723864, z: 0.47277614, w: 0.5021986}
+  m_LocalRotation: {x: 0.56143755, y: -0.45723867, z: 0.47277617, w: 0.50219864}
   m_LocalPosition: {x: 0.00041032798, y: 0.005656126, z: 0.00042224478}
   m_LocalScale: {x: 0.99999994, y: 1, z: 1.0000001}
   m_ConstrainProportionsScale: 0

@@ -66,6 +66,13 @@ public class FlashLightOnOff : MonoBehaviour
     {
         callingSound.Play();
     }
+    public void TurnOnPhone()
+    {
+        var myRenderer = phone.GetComponent<Renderer>();
+        var TempArray = myRenderer.materials;
+        TempArray[1] = newScreenMaterial;
+        myRenderer.materials = TempArray;
+    }
     public void ClickSound()
     {
         clickSound.Play();

@@ -6,7 +6,7 @@ public class InputManager : MonoBehaviour
     private PlayerInput playerInput;
     private PlayerMotor motor;
     private PlayerLook look;
-
+    private FlashLight flashLight;
 
     void Awake()
     {
@@ -14,9 +14,11 @@ public class InputManager : MonoBehaviour
         onFoot = playerInput.OnFoot;
         motor = GetComponent<PlayerMotor>();
         look = GetComponent<PlayerLook>();
+        flashLight = GetComponent<FlashLight>();
         onFoot.Jump.performed += ctx => motor.Jump();
         onFoot.Sprint.performed += ctx => motor.Sprint();
         onFoot.Crouch.performed += ctx => motor.HandleCrouch();
+        onFoot.FlashLight.performed += ctx => flashLight.FlashLightArm();
     }
 
     void FixedUpdate()
