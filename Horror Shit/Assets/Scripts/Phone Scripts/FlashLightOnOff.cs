@@ -99,6 +99,7 @@ public class FlashLightOnOff : MonoBehaviour
             }
             else if (randomNumber == 3)
             {
+                glitched = true;
                 caller = true;
                 Debug.Log("caller");
             }

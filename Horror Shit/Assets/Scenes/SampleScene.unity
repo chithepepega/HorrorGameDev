@@ -7389,6 +7389,7 @@ GameObject:
   - component: {fileID: 164931650}
   - component: {fileID: 164931649}
   - component: {fileID: 164931654}
+  - component: {fileID: 164931658}
   - component: {fileID: 164931655}
   - component: {fileID: 164931656}
   - component: {fileID: 164931657}
@@ -7587,7 +7588,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 164931644}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 32850c64db0fe13429def26951d51f4a, type: 3}
   m_Name: 
@@ -7701,6 +7702,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &164931658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164931644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da8ec7ebf5eafbd4aa0b7eda77e4ffe3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  armsFlashLight: {fileID: 919132149205387497}
+  flashLightIsOn: 0
+  animator: {fileID: 919132149205387498}
 --- !u!1 &167991617
 GameObject:
   m_ObjectHideFlags: 0
@@ -101663,7 +101679,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &919132149205387498
 Animator:
   serializedVersion: 5
@@ -101691,7 +101707,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132149205387497}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5538cfa6293a91542a19ab2c5ccaad69, type: 3}
   m_Name: 
