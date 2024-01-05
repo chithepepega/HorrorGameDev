@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 
@@ -13,7 +14,7 @@ public class DamagePlayer : MonoBehaviour
         
         if (other.gameObject.CompareTag("Player"))
         {
-            playerHealth.TakeDamage();
+            playerHealth.TakeDamage(50);
             Debug.Log("Player has entered the collider");
         }
     }
