@@ -43,7 +43,7 @@ public class PlayerHealth : MonoBehaviour
     }
     public void UpdateHealthUI()
     {
-        Debug.Log(health);
+        
     }
 
     public void TakeDamage(float damage)

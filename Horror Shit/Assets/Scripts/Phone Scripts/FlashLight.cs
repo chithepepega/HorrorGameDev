@@ -12,7 +12,6 @@ public class FlashLight : MonoBehaviour
     private void Awake()
     {
         flashLightIsOn = false;
-        animator = GetComponentInChildren<Animator>();
     }
     private void Update()
     {
@@ -36,9 +35,10 @@ public class FlashLight : MonoBehaviour
     public void FlashLightArm()
     {
         if (!flashLightIsOn)
-        {
+        { 
             if (Input.GetKeyDown(KeyCode.F))
             {
+                Debug.Log("Flash light is on");
                 armsFlashLight.SetActive(true);
                 flashLightIsOn = true;
             }

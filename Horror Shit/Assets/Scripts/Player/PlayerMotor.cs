@@ -7,8 +7,8 @@ public class PlayerMotor : MonoBehaviour {
     private float speed = 5;
     private bool sprinting;
 
-    private float gravity = -9.81f;
-    private float jumpHeight = 3f;
+    private float gravity = -18.81f;
+    private float jumpHeight = 2f;
     private bool isGrounded;
 
     private bool crouch;
