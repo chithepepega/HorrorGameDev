@@ -7338,7 +7338,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 164931656}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerFlashLight, Assembly-CSharp
         m_MethodName: AddDigit
         m_Mode: 5
@@ -7502,7 +7502,6 @@ GameObject:
   - component: {fileID: 164931654}
   - component: {fileID: 164931658}
   - component: {fileID: 164931655}
-  - component: {fileID: 164931656}
   - component: {fileID: 164931657}
   m_Layer: 8
   m_Name: Player
@@ -7692,31 +7691,6 @@ MonoBehaviour:
   overlay: {fileID: 1503920320}
   duration: 5
   fadeSpeed: 2.5
---- !u!114 &164931656
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 164931644}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32850c64db0fe13429def26951d51f4a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  flashLightOnOff: {fileID: 919132149205387499}
-  anim: {fileID: 919132149205387498}
-  flashLight: {fileID: 919132149205387497}
-  phone: {fileID: 488211915}
-  newScreenMaterial: {fileID: 2100000, guid: 627fd74343c2c7844b97d7206b675dce, type: 2}
-  currentScreenMaterial: {fileID: 2100000, guid: b93b41d628c07de4e82a6d6973ae38f1, type: 2}
-  timer: 10
-  fearQuestion: {fileID: 1834208134}
-  godQuestion: {fileID: 12126363}
-  deathQuestion: {fileID: 2032726789}
-  codeText: {fileID: 296565056}
-  safeCode: 123
-  codePanel: {fileID: 1365926895}
 --- !u!82 &164931657
 AudioSource:
   m_ObjectHideFlags: 0
@@ -21759,7 +21733,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 164931656}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerFlashLight, Assembly-CSharp
         m_MethodName: AddDigit
         m_Mode: 5
@@ -34348,7 +34322,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 164931656}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerFlashLight, Assembly-CSharp
         m_MethodName: AddDigit
         m_Mode: 5
@@ -42973,7 +42947,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 164931656}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerFlashLight, Assembly-CSharp
         m_MethodName: AddDigit
         m_Mode: 5
@@ -46108,7 +46082,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 164931656}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerFlashLight, Assembly-CSharp
         m_MethodName: AddDigit
         m_Mode: 5
@@ -74832,7 +74806,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 164931656}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerFlashLight, Assembly-CSharp
         m_MethodName: AddDigit
         m_Mode: 5
@@ -93598,7 +93572,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 164931656}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerFlashLight, Assembly-CSharp
         m_MethodName: AddDigit
         m_Mode: 5
@@ -94804,7 +94778,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 164931656}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerFlashLight, Assembly-CSharp
         m_MethodName: AddDigit
         m_Mode: 5
@@ -95037,7 +95011,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 164931656}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerFlashLight, Assembly-CSharp
         m_MethodName: AddDigit
         m_Mode: 5
@@ -102699,7 +102673,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5538cfa6293a91542a19ab2c5ccaad69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerFlashLight: {fileID: 164931656}
   phone: {fileID: 488211915}
   flashLight: {fileID: 2043543076}
   cameraLight: {fileID: 2043543078}

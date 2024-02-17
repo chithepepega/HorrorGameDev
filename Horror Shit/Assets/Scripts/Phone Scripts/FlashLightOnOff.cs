@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class FlashLightOnOff : MonoBehaviour
 {
-    public PlayerFlashLight playerFlashLight;
     public GameObject phone;
     public GameObject flashLight;
     public Light cameraLight;
@@ -58,7 +57,6 @@ public class FlashLightOnOff : MonoBehaviour
     }
     public void DisablePhoneEvent()
     {
-        playerFlashLight.timer = 10f;
         phoneEvent = false;
     }
 
