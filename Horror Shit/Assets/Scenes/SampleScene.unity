@@ -24733,7 +24733,7 @@ GameObject:
   m_Component:
   - component: {fileID: 517488814}
   m_Layer: 0
-  m_Name: Lights
+  m_Name: Lights Maze
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25694,7 +25694,7 @@ GameObject:
   - component: {fileID: 537501837}
   - component: {fileID: 537501836}
   - component: {fileID: 537501835}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: EntranceLightBlocker (Temporary)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58699,10 +58699,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6672834814641734591, guid: b551a37927d4a1c4ab9fb1efe4d68909, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b7c7c1aa5a5c08741876031eae3db001, type: 2}
+    - target: {fileID: -6672834814641734591, guid: b551a37927d4a1c4ab9fb1efe4d68909, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: efa6886d85041e44e8f3ec9d49e49d5e, type: 2}
     - target: {fileID: 919132149155446097, guid: b551a37927d4a1c4ab9fb1efe4d68909, type: 3}
       propertyPath: m_Name
       value: FloorLevel1
       objectReference: {fileID: 0}
+    - target: {fileID: 5299470023369365806, guid: b551a37927d4a1c4ab9fb1efe4d68909, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1d13380ea057d234dbf441c1d22c259f, type: 2}
+    - target: {fileID: 5299470023369365806, guid: b551a37927d4a1c4ab9fb1efe4d68909, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1d13380ea057d234dbf441c1d22c259f, type: 2}
+    - target: {fileID: 5299470023369365806, guid: b551a37927d4a1c4ab9fb1efe4d68909, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1d13380ea057d234dbf441c1d22c259f, type: 2}
+    - target: {fileID: 5299470023369365806, guid: b551a37927d4a1c4ab9fb1efe4d68909, type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1d13380ea057d234dbf441c1d22c259f, type: 2}
+    - target: {fileID: 5299470023369365806, guid: b551a37927d4a1c4ab9fb1efe4d68909, type: 3}
+      propertyPath: m_Materials.Array.data[4]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1d13380ea057d234dbf441c1d22c259f, type: 2}
     - target: {fileID: 6433522215957930272, guid: b551a37927d4a1c4ab9fb1efe4d68909, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
@@ -71068,7 +71096,7 @@ GameObject:
   - component: {fileID: 1453021969}
   - component: {fileID: 1453021968}
   - component: {fileID: 1453021967}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82957,7 +82985,7 @@ GameObject:
   - component: {fileID: 1754804016}
   - component: {fileID: 1754804015}
   - component: {fileID: 1754804014}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96487,9 +96515,9 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 0.43137255, g: 0.9254902, b: 0.8973255, a: 1}
-  m_Intensity: 2.04
-  m_Range: 10
+  m_Color: {r: 0.70598966, g: 0.8962264, b: 0.88565767, a: 1}
+  m_Intensity: 6
+  m_Range: 13.49
   m_SpotAngle: 64
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
