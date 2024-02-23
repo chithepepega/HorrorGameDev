@@ -18,4 +18,5 @@ public class DamagePlayer : MonoBehaviour
             Debug.Log("Player has entered the collider");
         }
     }
+    
 }
