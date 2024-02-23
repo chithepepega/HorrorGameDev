@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CorpseInteraction : Interactable
 {
+    public GameObject characterAllingForCorpse;
+    public GameObject referenceCorpseLocation;
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -13,6 +15,6 @@ public class CorpseInteraction : Interactable
     }
     protected override void Interact()
     {
-
+        Debug.Log("Interacted");
     }
 }
