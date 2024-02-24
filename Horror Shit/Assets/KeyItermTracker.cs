@@ -4,15 +4,6 @@ using UnityEngine;
 
 public class KeyItermTracker : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public bool playerHasKnife;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

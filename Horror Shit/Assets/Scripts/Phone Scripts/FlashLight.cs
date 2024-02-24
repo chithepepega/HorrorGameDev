@@ -5,6 +5,7 @@ using UnityEngine;
 public class FlashLight : MonoBehaviour
 {
     public GameObject armsFlashLight;
+    public KeyItermTracker keyItemTracker;
 
     public bool flashLightIsOn;
     public Animator animator;
@@ -26,6 +27,7 @@ public class FlashLight : MonoBehaviour
     {
         Debug.Log("We getting into iEnumerator");
         animator.Play("Put_TelephoneAway");
+        animator.Play("PutAwayKnife");
         // Wait for the animation to finish. Here, 1f is the length of the animation in seconds.
         yield return new WaitForSeconds(2f);
         armsFlashLight.SetActive(false);
@@ -38,9 +40,9 @@ public class FlashLight : MonoBehaviour
         { 
             if (Input.GetKeyDown(KeyCode.F))
             {
-                Debug.Log("Flash light is on");
                 armsFlashLight.SetActive(true);
                 flashLightIsOn = true;
+                CheckForKnife();
             }
         }
         else
@@ -57,4 +59,17 @@ public class FlashLight : MonoBehaviour
 
     }
 
+    public void CheckForKnife()
+    {
+        if (keyItemTracker.playerHasKnife == true)
+        {
+            Debug.Log("we are in the if");
+            animator.SetBool("hasKnife", true);
+        }
+        else if(keyItemTracker.playerHasKnife == false)
+        {
+            Debug.Log("On the else");
+            animator.SetBool("hasKnife", false);
+        }
+    }
 }
