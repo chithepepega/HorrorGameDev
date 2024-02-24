@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class CorpseInteraction : Interactable
 {
-    public GameObject characterAllingForCorpse;
-    public GameObject referenceCorpseLocation;
+    [SerializeField]
+    private GameObject cutScene;
+    [SerializeField]
+    private GameObject player;
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -15,6 +17,24 @@ public class CorpseInteraction : Interactable
     }
     protected override void Interact()
     {
-        Debug.Log("Interacted");
+        DeactivatePlayer();
+        ActivateCutscene();
+        StartCoroutine(FinishCutScene());
+    }
+
+    private void ActivateCutscene()
+    {
+        cutScene.SetActive(true);
+    }
+
+    private void DeactivatePlayer()
+    {
+        player.SetActive(false);
+    }
+    IEnumerator FinishCutScene()
+    {
+        yield return new WaitForSeconds(2.53f);
+        player.SetActive(true);
+        cutScene.SetActive(false);
     }
 }
