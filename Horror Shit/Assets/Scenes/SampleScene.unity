@@ -4797,6 +4797,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7271449666460269675, guid: cd3c123489763bd4c8f815226c3e451e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: -6672834814641734591, guid: cd3c123489763bd4c8f815226c3e451e, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -4805,9 +4809,25 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: efa6886d85041e44e8f3ec9d49e49d5e, type: 2}
+    - target: {fileID: -208595431880416365, guid: cd3c123489763bd4c8f815226c3e451e, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -208595431880416365, guid: cd3c123489763bd4c8f815226c3e451e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: cd3c123489763bd4c8f815226c3e451e, type: 3}
       propertyPath: m_Name
       value: MazeLevel1BigConcept
+      objectReference: {fileID: 0}
+    - target: {fileID: 1502877291743220047, guid: cd3c123489763bd4c8f815226c3e451e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 4267524338872788784, guid: cd3c123489763bd4c8f815226c3e451e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 5299470023369365806, guid: cd3c123489763bd4c8f815226c3e451e, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -4829,6 +4849,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[4]
       value: 
       objectReference: {fileID: 2100000, guid: 1d13380ea057d234dbf441c1d22c259f, type: 2}
+    - target: {fileID: 6014503084441653313, guid: cd3c123489763bd4c8f815226c3e451e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6433522215957930272, guid: cd3c123489763bd4c8f815226c3e451e, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -44660,7 +44684,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 904216048}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -131.54, y: 5.62, z: -56.7}
+  m_LocalPosition: {x: -113.54, y: 5.62, z: -56.7}
   m_LocalScale: {x: 16.126638, y: 0.2317719, z: 21.751316}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -48735,8 +48759,8 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
-  range: 20
-  sightRange: 10
+  range: 30
+  sightRange: 20
   attackRange: 2
 --- !u!65 &979668372
 BoxCollider:
@@ -48761,7 +48785,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 5
+  m_Speed: 2.02
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -103963,7 +103987,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132148475997085}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -93.65, y: 0.348, z: -48}
+  m_LocalPosition: {x: -131.17, y: 0.348, z: -40.74}
   m_LocalScale: {x: 1.6770599, y: 1.6770599, z: 1.6770599}
   m_ConstrainProportionsScale: 0
   m_Children:

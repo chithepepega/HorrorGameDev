@@ -14,40 +14,58 @@ public class EnemyAIPatrol : MonoBehaviour
 
     //patrol
     Vector3 destPoint;
+    Vector3 lastKnownPlayerPosition;
     bool walkpointSet;
     [SerializeField] float range;
 
     //state change
     [SerializeField] float sightRange, attackRange;
-    bool playerInSight, playerInAttackRange;
+    bool playerInSight, playerInAttackRange, investigateLastScene;
     // Start is called before the first frame update
     void Start()
     {
+        investigateLastScene = false;
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.Find("Player");
         animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         playerInSight = Physics.CheckSphere(transform.position, sightRange, playerLayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, playerLayer);
 
-        if(!playerInSight && !playerInAttackRange)Patrol();
-        if(playerInSight && !playerInAttackRange)Chase();
-        if(playerInSight && playerInAttackRange)Attack();
+        StateControl();
+    }
+  
+    void StateControl()
+    {
+        if (!playerInSight && !playerInAttackRange) Patrol();
+        if (playerInSight && !playerInAttackRange) Chase();
+        if (playerInSight && playerInAttackRange) Attack();
     }
     void Patrol()
     {
+        Debug.Log("Patrolling");
         if (!walkpointSet) SearchForDest();
         if (walkpointSet) agent.SetDestination(destPoint);
+        if (investigateLastScene) Investigate();
         if (Vector3.Distance(transform.position, destPoint) < 10) walkpointSet = false;
     }
 
     void Chase ()
     {
         agent.SetDestination(player.transform.position);
+        investigateLastScene = true;
+        Debug.Log("Chase");
+    }
+
+    void Investigate()
+    {
+        agent.SetDestination(player.transform.position);
+        Debug.Log("Investigating");
+        StartCoroutine(WaitToInvestigate());
     }
 
     void Attack()
@@ -60,6 +78,8 @@ public class EnemyAIPatrol : MonoBehaviour
     }
     void SearchForDest()
     {
+        if (investigateLastScene == true)
+            return;
         float z = Random.Range(-range, range);
         float x = Random.Range(-range, range);
 
@@ -69,5 +89,11 @@ public class EnemyAIPatrol : MonoBehaviour
         {
             walkpointSet = true;
         }
+    }
+
+    IEnumerator WaitToInvestigate()
+    {
+        yield return new WaitForSeconds(10.53f);
+        investigateLastScene = false;
     }
 }
