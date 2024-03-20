@@ -6,4 +6,5 @@ public class KeyItermTracker : MonoBehaviour
 {
     public bool playerHasKnife;
 
+
 }

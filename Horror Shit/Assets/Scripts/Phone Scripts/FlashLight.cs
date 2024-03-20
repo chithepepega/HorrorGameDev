@@ -27,6 +27,16 @@ public class FlashLight : MonoBehaviour
     {
         Debug.Log("We getting into iEnumerator");
         animator.Play("Put_TelephoneAway");
+        // Wait for the animation to finish. Here, 1f is the length of the animation in seconds.
+        yield return new WaitForSeconds(2f);
+        armsFlashLight.SetActive(false);
+        flashLightIsOn = false;
+    }
+
+    IEnumerator PlayAnimationAndDeactivateKnife()
+    {
+        Debug.Log("We getting into iEnumerator");
+        animator.Play("Put_TelephoneAway");
         animator.Play("PutAwayKnife");
         // Wait for the animation to finish. Here, 1f is the length of the animation in seconds.
         yield return new WaitForSeconds(2f);
@@ -52,8 +62,15 @@ public class FlashLight : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.F))
             {
-                Debug.Log("Flash light off");
-                StartCoroutine(PlayAnimationAndDeactivate());
+                if (keyItemTracker.playerHasKnife == false)
+                {
+                    Debug.Log("Flash light off");
+                    StartCoroutine(PlayAnimationAndDeactivate());
+                }
+                else 
+                {
+                    StartCoroutine(PlayAnimationAndDeactivateKnife());
+                }
             }
         }
 
