@@ -7808,7 +7808,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 164931644}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -132.17, y: 1.118, z: -52.1}
+  m_LocalPosition: {x: -65.621, y: 1.118, z: -103.2}
   m_LocalScale: {x: 1.0884, y: 1.0884, z: 1.0884}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -48762,6 +48762,8 @@ MonoBehaviour:
   range: 30
   sightRange: 20
   attackRange: 2
+  investigateLastScene: 0
+  dontPatroll: 0
 --- !u!65 &979668372
 BoxCollider:
   m_ObjectHideFlags: 0

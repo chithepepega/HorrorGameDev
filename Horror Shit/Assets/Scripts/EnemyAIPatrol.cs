@@ -20,7 +20,10 @@ public class EnemyAIPatrol : MonoBehaviour
 
     //state change
     [SerializeField] float sightRange, attackRange;
-    bool playerInSight, playerInAttackRange, investigateLastScene;
+    bool playerInSight, playerInAttackRange;
+    public bool investigateLastScene;
+    float investigationTime = 10f;
+    public bool dontPatroll;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +34,7 @@ public class EnemyAIPatrol : MonoBehaviour
     }
 
     // Update is called once per frame
-    void LateUpdate()
+    void Update()
     {
         playerInSight = Physics.CheckSphere(transform.position, sightRange, playerLayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, playerLayer);
@@ -43,14 +46,16 @@ public class EnemyAIPatrol : MonoBehaviour
     {
         if (!playerInSight && !playerInAttackRange) Patrol();
         if (playerInSight && !playerInAttackRange) Chase();
+        if (investigateLastScene) Investigate();
         if (playerInSight && playerInAttackRange) Attack();
     }
     void Patrol()
     {
+        if (investigateLastScene == true)
+            return;
         Debug.Log("Patrolling");
         if (!walkpointSet) SearchForDest();
         if (walkpointSet) agent.SetDestination(destPoint);
-        if (investigateLastScene) Investigate();
         if (Vector3.Distance(transform.position, destPoint) < 10) walkpointSet = false;
     }
 
@@ -63,9 +68,8 @@ public class EnemyAIPatrol : MonoBehaviour
 
     void Investigate()
     {
-        agent.SetDestination(player.transform.position);
-        Debug.Log("Investigating");
         StartCoroutine(WaitToInvestigate());
+        
     }
 
     void Attack()
@@ -93,7 +97,16 @@ public class EnemyAIPatrol : MonoBehaviour
 
     IEnumerator WaitToInvestigate()
     {
-        yield return new WaitForSeconds(10.53f);
+        float startTime = Time.time;
+        while (Time.time - startTime < investigationTime)
+        {
+            lastKnownPlayerPosition = player.transform.position;
+            agent.SetDestination(lastKnownPlayerPosition);
+            Debug.Log("going");
+            yield return null;
+        }
+
         investigateLastScene = false;
+        Debug.Log("Done investigating");
     }
 }
